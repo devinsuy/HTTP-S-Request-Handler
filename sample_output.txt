@@ -1,0 +1,1896 @@
+Script started on 2020-10-20 14:20:02-0700
+]0;resonance@resonance-VirtualBox: ~/Desktop/CloudFlare[01;32mresonance@resonance-VirtualBox[00m:[01;34m~/Desktop/CloudFlare[00m$ make
+g++    -c -o ParsedUrl.o ParsedUrl.cpp
+g++    -c -o Profiler.o Profiler.cpp
+g++    -c -o RequestHandler.o RequestHandler.cpp
+g++    -c -o main.o main.cpp
+g++ -o ReqCLI ParsedUrl.o Profiler.o RequestHandler.o main.o -lssl -lcrypto
+./ReqCLI
+
+Request Handler CLI Tool
+------------------------
+
+Example Usage:
+--------------
+--help		Display example usage menu
+
+--url		Performs HTTPS GET request, prints response to console
+		SYNTAX:		--url <link>
+		EXAMPLE:	--url https://postman-echo.com/get
+
+--profile	Perform consecutive requests, generate timing and size metrics
+		SYNTAX:		--url <link> <num_iterations>
+		EXAMPLE:	--url https://devinsuy.com/links 10
+
+exit		Terminates CLI tool
+
+
+> --url devinsuy.com
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+HTTPS REQUEST
+------------
+GET / HTTP/1.1
+Host: www.devinsuy.com
+Connection: close
+
+
+RESPONSE HEADER
+---------------
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2020 21:20:15 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: close
+Set-Cookie: __cfduid=dd08514a18754fdb25a3af111fbf955931603228814; expires=Thu, 19-Nov-20 21:20:14 GMT; path=/; domain=.devinsuy.com; HttpOnly; SameSite=Lax; Secure
+CF-Ray: 5e55c81da8df367e-LAX
+cf-request-id: 05e97b668c0000367e263a6000000001
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?lkg-colo=12&lkg-time=1603228815"}],"group":"cf-nel","max_age":604800}
+NEL: {"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+
+RESPONSE MESSAGE
+----------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devin Suy
+</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      #links a {
+        background: white;
+        border: 1px solid white;
+        width: 100%;
+        padding: 1rem 2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        border-radius: 6px;
+        transition: ease-in-out 0.2s;
+      }
+
+      #links a:hover {
+        background: none;
+        color: white;
+      }
+
+      #social a {
+        height: 32px;
+        width: 32px;
+        margin: 0 1rem;
+      }
+
+      #social a:hover {
+        height: 36px;
+        width: 36px;
+        transition: ease-in-out 0.2s;
+      }
+    </style>
+  </head>
+  <body class="bg-indigo-200
+">
+    <div class="mx-auto max-w-2xl min-h-screen flex flex-col items-center py-8">
+      <div class="flex flex-col items-center"
+ id="profile"
+>
+        
+<img
+ class="w-24 h-24 rounded-full shadow-md"
+ id="avatar" 
+src="https://i.imgur.com/urUOtek.jpg"
+ 
+/>
+        
+<h1 class="text-md text-white mt-2 font-semibold" id="name">
+Devin Suy
+</h1>
+
+      </div>
+
+      <div
+        class="flex flex-col space-between w-full px-8 text-center my-8"
+        id="links"
+      >
+<a href="https://www.cloudflare.com/learning/what-is-cloudflare/">A Better Internet!</a><a href="https://vote.gov/">Register To Vote</a><a href="https://www.close-the-gap.org/donate">Help End The Digital Divide</a></div>
+
+
+      <
+div 
+id="social" class="flex w-1/2 justify-evenly">
+<a href="https://www.linkedin.com/in/devin-suy-8651b2139/"> <img src="https://simpleicons.org/icons/linkedin.svg"> </a> <a href="https://www.instagram.com/dev__suy/"> <img src="https://simpleicons.org/icons/instagram.svg"> </a> <a href="https://github.com/devinsuy"> <img src="https://simpleicons.org/icons/github.svg"> </a> </div>
+
+    </div>
+  </body>
+</html>
+
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2115 bytes
+Total Time: 114 ms
+
+> --help
+
+Example Usage:
+--------------
+--help		Display example usage menu
+
+--url		Performs HTTPS GET request, prints response to console
+		SYNTAX:		--url <link>
+		EXAMPLE:	--url https://postman-echo.com/get
+
+--profile	Perform consecutive requests, generate timing and size metrics
+		SYNTAX:		--url <link> <num_iterations>
+		EXAMPLE:	--url https://devinsuy.com/links 10
+
+exit		Terminates CLI tool
+
+
+> --url https://postman-echo.com/get
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+HTTPS REQUEST
+------------
+GET /get/ HTTP/1.1
+Host: www.postman-echo.com
+Connection: close
+
+
+RESPONSE HEADER
+---------------
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2020 21:20:37 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 209
+Connection: close
+ETag: W/"d1-YgZpCgv0gMfKSQxs7pNZUcSj4YA"
+Vary: Accept-Encoding
+set-cookie: sails.sid=s%3AbP_pMmarzEOQCxUgXrmqUhUzi2r3QAkc.KY17ngimqINUBhFGKFTa7EUWwQgamqkQ6BiZ0H9ifNo; Path=/; HttpOnly
+
+RESPONSE MESSAGE
+----------------
+{"args":{},"headers":{"x-forwarded-proto":"https","x-forwarded-port":"443","host":"www.postman-echo.com","x-amzn-trace-id":"Root=1-5f8f54a5-22760fb22f9a7b677b4e6e6f"},"url":"https://www.postman-echo.com/get/"}
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 396 ms
+
+> --url devinsuy.com/links
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+HTTPS REQUEST
+------------
+GET /links/ HTTP/1.1
+Host: www.devinsuy.com
+Connection: close
+
+
+RESPONSE HEADER
+---------------
+HTTP/1.1 200 OK
+Date: Tue, 20 Oct 2020 21:20:45 GMT
+Content-Type: application/json
+Content-Length: 288
+Connection: close
+Set-Cookie: __cfduid=d06b5f9191c9f9efe7ed56624eef534ba1603228845; expires=Thu, 19-Nov-20 21:20:45 GMT; path=/; domain=.devinsuy.com; HttpOnly; SameSite=Lax; Secure
+cf-request-id: 05e97bde430000363cd012e000000001
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report?lkg-colo=12&lkg-time=1603228846"}],"group":"cf-nel","max_age":604800}
+NEL: {"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 5e55c8dd393c363c-LAX
+
+RESPONSE MESSAGE
+----------------
+[
+  {
+    "name": "A Better Internet!",
+    "url": "https://www.cloudflare.com/learning/what-is-cloudflare/"
+  },
+  {
+    "name": "Register To Vote",
+    "url": "https://vote.gov/"
+  },
+  {
+    "name": "Help End The Digital Divide",
+    "url": "https://www.close-the-gap.org/donate"
+  }
+]
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 92 ms
+
+> --help
+
+Example Usage:
+--------------
+--help		Display example usage menu
+
+--url		Performs HTTPS GET request, prints response to console
+		SYNTAX:		--url <link>
+		EXAMPLE:	--url https://postman-echo.com/get
+
+--profile	Perform consecutive requests, generate timing and size metrics
+		SYNTAX:		--url <link> <num_iterations>
+		EXAMPLE:	--url https://devinsuy.com/links 10
+
+exit		Terminates CLI tool
+
+
+> --profile devinsuy.com/linl ks 50
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 98 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 87 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 111 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 91 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 83 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 92 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 108 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 86 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 103 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 109 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 95 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 100 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 83 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 85 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 89 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 101 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 83 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 85 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 105 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 105 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 140 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 83 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 90 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 91 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 82 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 91 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 94 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 89 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 82 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 85 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 96 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 94 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 88 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 94 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 92 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 90 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 99 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 87 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 83 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 91 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 94 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 107 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 85 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 82 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 87 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 84 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 86 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 90 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 86 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 288 bytes
+Total Time: 128 ms
+
+Profiling Results
+-----------------
+Requests made to: www.devinsuy.com/links/
+Success percentage: 100
+Total number of requests: 50
+
+Timing
+------
+Fastest request: 82
+Slowest request: 140
+Median request: 181
+Mean request: 93
+
+Size
+----
+Smallest response: 288 bytes
+Largest response: 288 bytes
+
+> --help
+
+Example Usage:
+--------------
+--help		Display example usage menu
+
+--url		Performs HTTPS GET request, prints response to console
+		SYNTAX:		--url <link>
+		EXAMPLE:	--url https://postman-echo.com/get
+
+--profile	Perform consecutive requests, generate timing and size metrics
+		SYNTAX:		--url <link> <num_iterations>
+		EXAMPLE:	--url https://devinsuy.com/links 10
+
+exit		Terminates CLI tool
+
+
+> --profile postman-ego  cho.com/get 100
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 391 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 348 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 355 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 510 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 346 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 349 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 355 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 346 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 355 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 365 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 347 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 347 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 378 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 359 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 345 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 360 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 342 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 365 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 346 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 357 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 347 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 359 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 348 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 349 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 362 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 361 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 355 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 373 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 349 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 355 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 348 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 349 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 344 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 358 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 363 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 366 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 348 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 346 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 362 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 370 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 349 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 367 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 360 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 360 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 349 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 360 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 355 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 361 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 359 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 362 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 352 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 547 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 351 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 357 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 350 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 359 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 354 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 356 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 348 ms
+
+Established connection to "www.postman-echo.com" with ECDHE-RSA-AES128-GCM-SHA256
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 209 bytes
+Total Time: 353 ms
+
+Profiling Results
+-----------------
+Requests made to: www.postman-echo.com/get/
+Success percentage: 100
+Total number of requests: 100
+
+Timing
+------
+Fastest request: 342
+Slowest request: 547
+Median request: 706
+Mean request: 357
+
+Size
+----
+Smallest response: 209 bytes
+Largest response: 209 bytes
+
+> --help
+
+Example Usage:
+--------------
+--help		Display example usage menu
+
+--url		Performs HTTPS GET request, prints response to console
+		SYNTAX:		--url <link>
+		EXAMPLE:	--url https://postman-echo.com/get
+
+--profile	Perform consecutive requests, generate timing and size metrics
+		SYNTAX:		--url <link> <num_iterations>
+		EXAMPLE:	--url https://devinsuy.com/links 10
+
+exit		Terminates CLI tool
+
+
+> --profile devinsuy.com 20
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2080 bytes
+Total Time: 120 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2097 bytes
+Total Time: 161 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 225 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2085 bytes
+Total Time: 121 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 111 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 107 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 342 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2010 bytes
+Total Time: 132 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 129 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2045 bytes
+Total Time: 115 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2108 bytes
+Total Time: 131 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 119 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2029 bytes
+Total Time: 116 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2086 bytes
+Total Time: 119 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2015 bytes
+Total Time: 113 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 114 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2091 bytes
+Total Time: 120 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2028 bytes
+Total Time: 131 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 142 ms
+
+Established connection to "www.devinsuy.com" with TLS_AES_256_GCM_SHA384
+
+
+RESPONSE INFO
+-------------
+Status Code: 200
+Response Size: 2004 bytes
+Total Time: 112 ms
+
+Profiling Results
+-----------------
+Requests made to: www.devinsuy.com/
+Success percentage: 100
+Total number of requests: 20
+
+Timing
+------
+Fastest request: 107
+Slowest request: 342
+Median request: 240
+Mean request: 139
+
+Size
+----
+Smallest response: 2004 bytes
+Largest response: 2108 bytes
+
+> --help
+
+Example Usage:
+--------------
+--help		Display example usage menu
+
+--url		Performs HTTPS GET request, prints response to console
+		SYNTAX:		--url <link>
+		EXAMPLE:	--url https://postman-echo.com/get
+
+--profile	Perform consecutive requests, generate timing and size metrics
+		SYNTAX:		--url <link> <num_iterations>
+		EXAMPLE:	--url https://devinsuy.com/links 10
+
+exit		Terminates CLI tool
+
+
+> exit
+
+Exiting . . .
+]0;resonance@resonance-VirtualBox: ~/Desktop/CloudFlare[01;32mresonance@resonance-VirtualBox[00m:[01;34m~/Desktop/CloudFlare[00m$ exit
+exit
+
+Script done on 2020-10-20 14:22:54-0700
