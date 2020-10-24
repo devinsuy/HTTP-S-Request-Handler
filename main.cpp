@@ -9,8 +9,8 @@ void show_help() {
     printf("\t\tSYNTAX:\t\t--url <link>\n");
     printf("\t\tEXAMPLE:\t--url https://postman-echo.com/get\n\n");
     printf("--profile\tPerform consecutive requests, generate timing and size metrics\n");
-    printf("\t\tSYNTAX:\t\t--url <link> <num_iterations>\n");
-    printf("\t\tEXAMPLE:\t--url https://devinsuy.com/links 10\n\n");
+    printf("\t\tSYNTAX:\t\t--profile <link> <num_iterations>\n");
+    printf("\t\tEXAMPLE:\t--profile https://devinsuy.com/links 10\n\n");
     printf("exit\t\tTerminates CLI tool\n\n\n");
 }
 
